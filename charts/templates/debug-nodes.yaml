@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: node-lookup-debug
+data:
+  raw_nodes: {{ (lookup "v1" "Node" "" "").items | toJson | quote }}
+  node_count: {{ len (lookup "v1" "Node" "" "").items | quote }}

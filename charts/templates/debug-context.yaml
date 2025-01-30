@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kube-context-debug
+data:
+  current_context: {{ .Values._argoKubeContext | quote }}
+  cluster_info: {{ (lookup "v1" "Namespace" "" "").metadata | toJson | quote }}
